@@ -15,31 +15,34 @@ def start_ai_voice():
 
 def start_gui(page: ft.Page):
     
-    page.title = "Voize Caption AI"
+    page.title = "TOMZINHA SUBTITLE AI"
 
     t = ft.Text(value="", size=25)
     
+    page.window.height = 500
+    page.window.width = 300
+    
     cl = ft.Column(
-        height=page.window_height - 20,
-        width=page.window_width,
+        height=page.window.height - 70,
+        width=page.window.width,
         scroll=ft.ScrollMode.ALWAYS,
         auto_scroll=True,
         adaptive=True,
     )
     cl.controls.append(t)
-
+    tomzinha_name = ft.Text(value="contact: tomoliveira1995@gmail.com")
+    
     page.add(ft.Container(cl, border=ft.border.all(1)))
+    page.add(tomzinha_name)
+
 
     while True:
         data = loads(queue.get())
-        cl.height = page.window.height - 30
+        cl.height = page.window.height - 70
         cl.width = page.window.width
 
         if 'partial' in data and data["partial"] != "":
-            
-            print(data['partial'])
-            t.value = data['partial']
-        
+            t.value = data['partial']        
             page.update()
 
 

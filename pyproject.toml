@@ -7,5 +7,5 @@ requires-python = ">=3.10"
 dependencies = [
     "flet[all]>=0.25.2",
     "sounddevice>=0.5.1",
-    "vosk>=0.3.45",
+    "vosk==0.3.44",
 ]
