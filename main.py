@@ -4,7 +4,6 @@ from queue import Queue
 from json import loads
 from translate_object import TranslateObject
 import flet as ft   
-from argostranslate import translate
 
 queue = Queue()
 queue_translator = Queue()
