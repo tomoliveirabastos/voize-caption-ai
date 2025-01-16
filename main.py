@@ -11,7 +11,8 @@ queue_translator = Queue()
 tr_ob = TranslateObject()
 
 def start_ai_voice():
-    ai = VoiceAI(vosk_name="vosk-model-en-us-0.42-gigaspeech")
+    ai = VoiceAI()
+    # ai = VoiceAI("vosk-model-en-us-0.42-gigaspeech")
     ai.voice(lambda obj: queue.put(obj))
 
 
@@ -68,10 +69,12 @@ def start_gui(page: ft.Page):
 
 def translate_text_rotine():
     while True:
-        d = queue_translator.get()
-        if d != "":
-            tr_ob.current_english_text = tr_ob.translate(d)
-        
+        try:
+            d = queue_translator.get()
+            if d != "":
+                tr_ob.current_english_text = tr_ob.translate(d)
+        except Exception as e:
+            print(e)
 
 thread = Thread(target=start_ai_voice)
 thread.start()
