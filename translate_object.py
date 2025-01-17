@@ -1,4 +1,4 @@
-from argostranslate import translate
+from argostranslate import translate, package
 
 class TranslateObject:
 
@@ -9,6 +9,15 @@ class TranslateObject:
 
 
     def translate(self, english_text: str) -> str:
-        print(self.from_code, self.to_code)
+
+        package.update_package_index()
+        available_packages = package.get_available_packages()
+        package_to_install = next(
+            filter(
+                lambda x: x.from_code == self.from_code and x.to_code == self.to_code, available_packages
+            )
+        )
+        package.install_from_path(package_to_install.download())
+
         self.current_english_text = translate.translate(english_text, self.from_code, self.to_code)
         return self.current_english_text
