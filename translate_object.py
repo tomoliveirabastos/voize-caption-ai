@@ -9,5 +9,6 @@ class TranslateObject:
 
 
     def translate(self, english_text: str) -> str:
+        print(self.from_code, self.to_code)
         self.current_english_text = translate.translate(english_text, self.from_code, self.to_code)
         return self.current_english_text
