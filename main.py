@@ -9,6 +9,7 @@ queue = Queue()
 queue_translator = Queue()
 
 tr_ob = TranslateObject()
+tr_ob.install()
 
 def start_ai_voice():
     ai = VoiceAI()

@@ -7,8 +7,7 @@ class TranslateObject:
         self.to_code = 'pt'
         self.current_english_text = ""
 
-
-    def translate(self, english_text: str) -> str:
+    def install(self):
 
         package.update_package_index()
         available_packages = package.get_available_packages()
@@ -18,6 +17,10 @@ class TranslateObject:
             )
         )
         package.install_from_path(package_to_install.download())
+
+
+
+    def translate(self, english_text: str) -> str:
 
         self.current_english_text = translate.translate(english_text, self.from_code, self.to_code)
         return self.current_english_text
